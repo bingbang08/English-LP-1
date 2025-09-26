@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>현대 미국 시 문학 수업</title>
+    <style>
+        body {
+            font-family: 'Malgun Gothic', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(45deg, #1e3c72, #2a5298);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .nav-tabs {
+            display: flex;
+            background: #f8f9fa;
+            border-bottom: 2px solid #e9ecef;
+        }
+        
+        .nav-tab {
+            flex: 1;
+            padding: 15px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+        }
+        
+        .nav-tab:hover {
+            background: #e9ecef;
+        }
+        
+        .nav-tab.active {
+            background: white;
+            border-bottom-color: #2a5298;
+            color: #2a5298;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .poem-section {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .poem-section.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .poem-title {
+            color: #2a5298;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #e9ecef;
+            padding-bottom: 10px;
+        }
+        
+        .poem-text {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            font-style: italic;
+            line-height: 1.8;
+            border-left: 4px solid #2a5298;
+        }
+        
+        .analysis-box {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        .analysis-box h3 {
+            margin-top: 0;
+            color: #fff;
+        }
+        
+        .vocab-item {
+            background: #e3f2fd;
+            padding: 10px 15px;
+            margin: 5px 0;
+            border-radius: 5px;
+            border-left: 4px solid #2196f3;
+        }
+        
+        .vocab-word {
+            font-weight: bold;
+            color: #1976d2;
+        }
+        
+        .question-box {
+            background: #fff3e0;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 4px solid #ff9800;
+        }
+        
+        .cultural-note {
+            background: #f3e5f5;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 4px solid #9c27b0;
+        }
+        
+        .interactive-element {
+            margin: 20px 0;
+            padding: 15px;
+            background: #e8f5e8;
+            border-radius: 10px;
+            border-left: 4px solid #4caf50;
+        }
+        
+        .btn {
+            background: #2a5298;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s ease;
+        }
+        
+        .btn:hover {
+            background: #1e3c72;
+        }
+        
+        .hidden-content {
+            display: none;
+            margin-top: 15px;
+            padding: 15px;
+            background: white;
+            border-radius: 5px;
+            border: 2px solid #4caf50;
+        }
+        
+        .author-info {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+        
+        .highlight {
+            background: yellow;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📚 현대 미국 시 문학 수업</h1>
+            <p>Contemporary American Poetry Analysis</p>
+        </div>
+        
+        <div class="nav-tabs">
+            <button class="nav-tab active" onclick="showSection(0, this)">Mango Poem</button>
+            <button class="nav-tab" onclick="showSection(1, this)">Morning After Election</button>
+            <button class="nav-tab" onclick="showSection(2, this)">A Carpapalooza</button>
+            <button class="nav-tab" onclick="showSection(3, this)">Pangasinan Afternoon</button>
+            <button class="nav-tab" onclick="showSection(4, this)">종합 정리</button>
+        </div>
+        
+        <div class="content">
+            <!-- Mango Poem Section -->
+            <div class="poem-section active">
+                <h2 class="poem-title">🥭 "Mango Poem" by Reggie Cabico</h2>
+                
+                <div class="author-info">
+                    <strong>작가 소개:</strong> Reggie Cabico는 필리핀계 미국인 시인으로, 이민자의 경험과 가족사를 주로 다룹니다.
+                </div>
+                
+                <div class="poem-text">
+                    Mother fetches the fruit from the mango grove<br>
+                    behind closed bamboo.<br>
+                    Rips its paper-leather over during midday recess<br>
+                    before English class, describe their dance<br>
+                    teacher plum carrot-ripe before my first world<br>
+                    eyes. When the sun blazed on the dust.<br><br>
+                    
+                    We left the Philippines for California dodging<br>
+                    U.S. Customs with the forbidden fruit,<br>
+                    thinking who'd deprive mother of her mangos.<br>
+                    Head down, my father denies that we have perishable<br>
+                    goods...
+                </div>
+                
+                <div class="analysis-box">
+                    <h3>📝 주요 분석 포인트</h3>
+                    <p><strong>1. 기억과 향수 (Memory & Nostalgia):</strong> 화자가 어린 시절 필리핀에서의 기억을 회상합니다.</p>
+                    <p><strong>2. 이민 경험:</strong> 미국 세관을 통과할 때의 긴장감을 생생하게 묘사합니다.</p>
+                    <p><strong>3. 문화적 정체성:</strong> 망고라는 과일을 통해 본국과의 연결고리를 표현합니다.</p>
+                </div>
+                
+                <div class="vocab-item">
+                    <span class="vocab-word">fetch</span> - 가져오다, 가지러 가다
+                </div>
+                <div class="vocab-item">
+                    <span class="vocab-word">grove</span> - 작은 숲, 과수원
+                </div>
+                <div class="vocab-item">
+                    <span class="vocab-word">rip</span> - 찢다, 벗기다
+                </div>
+                <div class="vocab-item">
+                    <span class="vocab-word">customs</span> - 세관
+                </div>
+                <div class="vocab-item">
+                    <span class="vocab-word">perishable</span> - 상하기 쉬운, 부패하기 쉬운
+                </div>
+                
+                <div class="question-box">
+                    <h3>🤔 생각해볼 질문들</h3>
+                    <p><strong>Q1:</strong> 망고가 이 시에서 상징하는 바는 무엇일까요?</p>
+                    <p><strong>Q2:</strong> "forbidden fruit"라는 표현이 주는 의미는?</p>
+                    <p><strong>Q3:</strong> 부모님이 세관에서 망고를 숨기는 이유는 무엇일까요?</p>
+                </div>
+                
+                <div class="interactive-element">
+                    <button class="btn" onclick="toggleContent('mango-answer')">답안 확인하기</button>
+                    <div id="mango-answer" class="hidden-content">
+                        <p><strong>A1:</strong> 망고는 고향(필리핀)에 대한 그리움, 문화적 정체성, 그리고 가족의 유대감을 상징합니다.</p>
+                        <p><strong>A2:</strong> 성경의 "금단의 과실"을 연상시키며, 법적으로 반입이 금지된 물건임을 강조합니다.</p>
+                        <p><strong>A3:</strong> 경제적 이유(검역 문제)도 있지만, 더 깊게는 고향의 맛을 간직하고 싶은 마음 때문입니다.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Morning After Election Section -->
+            <div class="poem-section">
+                <h2 class="poem-title">🗳️ "Morning After The Election"</h2>
+                
+                <div class="cultural-note">
+                    <h3>🇺🇸 문화적 배경</h3>
+                    <p>이 시는 미국의 정치적 상황에 대한 개인적 반응을 다룬 작품입니다. 화자는 큰 정치적 변화에 직면한 상황에서 자신이 통제할 수 있는 것과 없는 것을 구분하고 있습니다.</p>
+                </div>
+                
+                <div class="poem-text">
+                    I can't control<br>
+                    the vanishing of bees<br><br>
+                    
+                    but I can control<br>
+                    the honey I swallow<br>
+                    to soothe the vocal cords<br><br>
+                    
+                    I can't control boys<br>
+                    bully-tumbling another boy<br>
+                    in the classroom like they're in a mosh pit<br><br>
+                    
+                    but I can remember rolling on hills<br>
+                    with boys being the bully...
+                </div>
+                
+                <div class="analysis-box">
+                    <h3>📝 시의 구조 분석</h3>
+                    <p><strong>반복 구조:</strong> "I can't control... but I can..." 패턴이 반복됩니다.</p>
+                    <p><strong>대조법:</strong> 통제할 수 없는 것 vs 통제할 수 있는 것</p>
+                    <p><strong>개인과 사회:</strong> 개인적 경험과 사회적 문제를 연결시킵니다.</p>
+                </div>
+                
+                <div class="vocab-item">
+                    <span class="vocab-word">vanishing</span> - 사라지는, 소멸하는
+                </div>
+                <div class="vocab-item">
+                    <span class="vocab-word">soothe</span> - 달래다, 진정시키다
+                </div>
+                <div class="vocab-item">
+                    <span class="vocab-word">vocal cords</span> - 성대
+                </div>
+                <div class="vocab-item">
+                    <span class="vocab-word">mosh pit</span> - 록 콘서트에서 격렬하게 춤추는 공간
+                </div>
+                
+                <div class="interactive-element">
+                    <button class="btn" onclick="toggleContent('election-exercise')">구조 분석 연습</button>
+                    <div id="election-exercise" class="hidden-content">
+                        <p><strong>연습:</strong> 시에서 "I can't control"로 시작하는 구절을 모두 찾아보세요.</p>
+                        <p>그리고 "but I can"으로 이어지는 부분과 어떻게 대조되는지 분석해보세요.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Carpapalooza Section -->
+            <div class="poem-section">
+                <h2 class="poem-title">🐟 "A Carpapalooza: An American Anthem"</h2>
+                
+                <div class="cultural-note">
+                    <h3>🎭 패러디와 풍자</h3>
+                    <p>이 시는 미국의 소비문화와 대중문화를 "잉어(Carp)"라는 물고기를 통해 풍자한 작품입니다. 
+                    "Carpapalooza"는 "Lollapalooza"(유명한 음악 페스티벌)를 패러디한 제목입니다.</p>
+                </div>
+                
+                <div class="poem-text">
+                    I can write about colonialism, Disney, riots<br>
+                    & inoculations. Centuries of American history<br>
+                    before me: Pocahontas' boat, Rosa Parks<br>
+                    arrest & Fred Sanford. I'm Freaky meeting Naomi<br>
+                    but with only an hour to go before recording<br>
+                    a poem at The National Archives. I'm in<br>
+                    Starbucks obsessed and struggling<br>
+                    with the queerest piece of literature<br>
+                    in the Archives: Eat The Carp...
+                </div>
+                
+                <div class="analysis-box">
+                    <h3>📝 문학 기법 분석</h3>
+                    <p><strong>1. 나열법:</strong> 다양한 역사적 인물과 사건들을 나열합니다.</p>
+                    <p><strong>2. 대중문화 참조:</strong> 디즈니, 스타벅스 등 현대 문화를 언급합니다.</p>
+                    <p><strong>3. 자기 반영적 글쓰기:</strong> 시 창작 과정 자체를 시의 내용으로 만듭니다.</p>
+                </div>
+                
+                <div class="vocab-item">
+                    <span class="vocab-word">colonialism</span> - 식민주의
+                </div>
+                <div class="vocab-item">
+                    <span class="vocab-word">inoculations</span> - 예방접종
+                </div>
+                <div class="vocab-item">
+                    <span class="vocab-word">obsessed</span> - 사로잡힌, 집착하는
+                </div>
+                <div class="vocab-item">
+                    <span class="vocab-word">archives</span> - 기록 보관소
+                </div>
+                
+                <div class="question-box">
+                    <h3>💭 비판적 사고</h3>
+                    <p>시인은 왜 "Carp(잉어)"를 미국의 상징으로 선택했을까요? 
+                    독수리나 다른 동물이 아닌 잉어를 선택한 이유를 생각해보세요.</p>
+                </div>
+            </div>
+            
+            <!-- Pangasinan Section -->
+            <div class="poem-section">
+                <h2 class="poem-title">🌅 "An Afternoon in Pangasinan with No Electricity"</h2>
+                
+                <div class="cultural-note">
+                    <h3>🌏 필리핀 문화</h3>
+                    <p><strong>Pangasinan</strong>은 필리핀 루손 섬의 한 지역입니다. 
+                    이 시는 전기가 없는 오후의 일상을 통해 자연과의 연결, 가족의 전통을 보여줍니다.</p>
+                </div>
+                
+                <div class="poem-text">
+                    In the yellow of butter<br>
+                    My mother colors my skin<br>
+                    In the yellow of sun<br>
+                    M skin becomes brown<br>
+                    In the yellow of yolk<br>
+                    My grandfather finds an egg<br>
+                    In the yellow of noon<br>
+                    We swallow the baby chick<br>
+                    Balot they call it<br>
+                    Long life he says<br>
+                    And discards the purple shell
+                </div>
+                
+                <div class="analysis-box">
+                    <h3>📝 시어와 이미지</h3>
+                    <p><strong>색깔 상징:</strong> '노란색(yellow)'이 반복되며 따뜻함과 생명력을 상징합니다.</p>
+                    <p><strong>감각적 묘사:</strong> 시각, 촉각, 미각을 통한 생생한 묘사가 돋보입니다.</p>
+                    <p><strong>문화적 디테일:</strong> 발루트(Balut)라는 필리핀 전통 음식을 소개합니다.</p>
+                </div>
+                
+                <div class="vocab-item">
+                    <span class="vocab-word">yolk</span> - 달걀노른자
+                </div>
+                <div class="vocab-item">
+                    <span class="vocab-word">swallow</span> - 삼키다
+                </div>
+                <div class="vocab-item">
+                    <span class="vocab-word">balot (balut)</span> - 부화 직전의 오리알을 삶은 필리핀 전통 음식
+                </div>
+                <div class="vocab-item">
+                    <span class="vocab-word">discard</span> - 버리다, 폐기하다
+                </div>
+                
+                <div class="interactive-element">
+                    <button class="btn" onclick="toggleContent('pangasinan-cultural')">문화적 맥락 더 알아보기</button>
+                    <div id="pangasinan-cultural" class="hidden-content">
+                        <p><strong>발루트(Balut):</strong> 필리핀과 베트남 등 동남아시아에서 즐겨 먹는 음식으로, 
+                        부화 직전의 오리알을 삶아 먹는 것입니다. 단백질이 풍부하고 체력 보강에 좋다고 여겨집니다.</p>
+                        <p><strong>문학적 의미:</strong> 이 시에서는 세대 간의 전통 전수와 문화적 정체성을 나타냅니다.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Summary Section -->
+            <div class="poem-section">
+                <h2 class="poem-title">📚 종합 정리 및 학습 포인트</h2>
+                
+                <div class="analysis-box">
+                    <h3>🎯 공통 주제들</h3>
+                    <p><strong>1. 정체성 (Identity):</strong> 이민자로서의 경험, 문화적 뿌리</p>
+                    <p><strong>2. 기억과 향수 (Memory & Nostalgia):</strong> 고향에 대한 그리움</p>
+                    <p><strong>3. 현대 미국 사회:</strong> 정치, 소비문화, 다문화주의</p>
+                    <p><strong>4. 개인과 사회:</strong> 개인적 경험과 사회적 이슈의 연결</p>
+                </div>
+                
+                <div class="question-box">
+                    <h3>📝 최종 검토 질문</h3>
+                    <p><strong>1.</strong> 각 시에서 가장 인상 깊었던 이미지나 표현은 무엇인가요?</p>
+                    <p><strong>2.</strong> 이 시들이 현대 미국 사회의 어떤 면을 보여주고 있나요?</p>
+                    <p><strong>3.</strong> 시인들의 정체성이 작품에 어떻게 반영되어 있나요?</p>
+                </div>
+                
+                <div class="cultural-note">
+                    <h3>🌟 학습 성과</h3>
+                    <p>이번 수업을 통해 여러분은:</p>
+                    <ul>
+                        <li>현대 미국 시의 다양한 목소리를 접했습니다</li>
+                        <li>문학 작품 속 문화적 맥락을 이해했습니다</li>
+                        <li>시의 구조와 기법을 분석하는 방법을 배웠습니다</li>
+                        <li>개인의 경험이 보편적 주제로 승화되는 과정을 관찰했습니다</li>
+                    </ul>
+                </div>
+                
+                <div class="interactive-element">
+                    <h3>✍️ 창작 활동</h3>
+                    <p>이제 여러분도 자신만의 시를 써보세요! 
+                    오늘 배운 시들처럼 개인적인 경험에서 출발하여 
+                    더 큰 의미를 담는 시를 창작해보는 것은 어떨까요?</p>
+                    <button class="btn" onclick="toggleContent('writing-prompt')">창작 가이드 보기</button>
+                    <div id="writing-prompt" class="hidden-content">
+                        <p><strong>주제 제안:</strong></p>
+                        <p>• 어린 시절의 특별한 음식과 관련된 기억</p>
+                        <p>• 내가 통제할 수 있는 것과 없는 것들</p>
+                        <p>• 우리나라의 전통과 현대가 만나는 순간</p>
+                        <p>• 일상 속에서 발견한 특별한 의미</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showSection(index, tab) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.poem-section');
+            sections.forEach(section => section.classList.remove('active'));
+            
+            // Remove active class from all tabs
+            const tabs = document.querySelectorAll('.nav-tab');
+            tabs.forEach(t => t.classList.remove('active'));
+            
+            // Show selected section
+            sections[index].classList.add('active');
+            tab.classList.add('active');
+        }
+        
+        function toggleContent(id) {
+            const content = document.getElementById(id);
+            const button = content.previousElementSibling;
+            
+            if (content.style.display === 'block') {
+                content.style.display = 'none';
+                button.textContent = button.textContent.replace('숨기기', '보기');
+            } else {
+                content.style.display = 'block';
+                button.textContent = button.textContent.replace('보기', '숨기기');
+            }
+        }
+    </script>
+</body>
+</html>
